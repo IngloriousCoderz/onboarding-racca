@@ -20,4 +20,12 @@ module.exports = {
     "no-console": [1, { allow: ["error"] }],
     "no-magic-numbers": 1,
   },
+  overrides: [
+    {
+      files: "*.test.js",
+      rules: {
+        "no-magic-numbers": 0,
+      },
+    },
+  ],
 };

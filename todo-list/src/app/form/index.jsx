@@ -1,17 +1,20 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
 
 import FormComponent from "./form";
+import {
+  taskAdded,
+  textChanged,
+} from "../redux/03-multiple-reducers/action-creators";
+import { selectText } from "../redux/03-multiple-reducers/selectors";
 
-function Form({ onSubmit }) {
-  const [text, setText] = useState("");
+function Form() {
+  const text = useSelector(selectText);
+  const dispatch = useDispatch();
 
-  const handleChange = (event) => setText(event.target.value);
-
+  const handleChange = (event) => dispatch(textChanged(event.target.value));
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(text);
-    setText("");
+    dispatch(taskAdded(text));
   };
 
   return (
@@ -22,13 +25,5 @@ function Form({ onSubmit }) {
     />
   );
 }
-
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
-
-Form.defaultProps = {
-  onSubmit: () => {},
-};
 
 export default Form;

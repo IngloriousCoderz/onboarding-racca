@@ -6,6 +6,7 @@ import classes from "./list.module.scss";
 // presentational component
 
 function List({ tasks, onSpanClick, onButtonClick }) {
+  console.log("list rendered");
   return (
     <ul>
       {tasks.map(({ id, text, completed }) => (
