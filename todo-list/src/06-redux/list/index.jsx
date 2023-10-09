@@ -1,9 +1,7 @@
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import ListComponent from "./list";
-import { selectTasks } from "../redux/selectors";
-import { tasksRetrieved, taskToggled, taskDeleted } from "../redux/thunks";
+import { taskDeleted, taskToggled } from "./tasks.slice";
+import { selectTasks } from "../redux/04-slices/selectors";
 
 // container component
 
@@ -11,13 +9,8 @@ function List() {
   const tasks = useSelector(selectTasks);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(tasksRetrieved());
-  }, [dispatch]);
-
-  const handleSpanClick = async (id) => dispatch(taskToggled(id));
-
-  const handleButtonClick = async (id) => dispatch(taskDeleted(id));
+  const handleSpanClick = (id) => dispatch(taskToggled(id));
+  const handleButtonClick = (id) => dispatch(taskDeleted(id));
 
   return (
     <ListComponent

@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import FormComponent from "./form";
 import { textChanged } from "./text.slice";
-import { taskAdded } from "../redux/thunks";
-import { selectText } from "../redux/selectors";
+import { taskAdded } from "../redux/04-slices/action-creators";
+import { selectText } from "../redux/04-slices/selectors";
 
 // container component
 
@@ -12,7 +12,7 @@ function Form() {
   const dispatch = useDispatch();
 
   const handleChange = (event) => dispatch(textChanged(event.target.value));
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(taskAdded(text));
   };

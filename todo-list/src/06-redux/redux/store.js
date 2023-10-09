@@ -15,7 +15,11 @@ const store = configureStore({
   reducer: { text, tasks },
   preloadedState: {
     text: "",
-    tasks: [],
+    tasks: [
+      { id: 1, text: "Learn React", completed: true },
+      { id: 2, text: "Look for a job", completed: false },
+      { id: 3, text: "Forget everything" },
+    ],
   },
 });
 
