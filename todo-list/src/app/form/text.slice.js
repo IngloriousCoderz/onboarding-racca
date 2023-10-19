@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { taskAdded } from "../redux/action-creators";
+import { taskAdded } from "../redux/thunks";
 
 const INITIAL_STATE = "";
 
